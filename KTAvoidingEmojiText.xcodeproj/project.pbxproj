@@ -15,6 +15,9 @@
 		E36BD1661C98270C00B1AF83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E36BD1641C98270C00B1AF83 /* LaunchScreen.storyboard */; };
 		E36BD1711C98270C00B1AF83 /* KTAvoidingEmojiTextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E36BD1701C98270C00B1AF83 /* KTAvoidingEmojiTextTests.m */; };
 		E36BD17C1C98270C00B1AF83 /* KTAvoidingEmojiTextUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E36BD17B1C98270C00B1AF83 /* KTAvoidingEmojiTextUITests.m */; };
+		E36BD18F1C98275300B1AF83 /* KTAvoidingEmojiTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E36BD18A1C98275300B1AF83 /* KTAvoidingEmojiTextField.m */; };
+		E36BD1901C98275300B1AF83 /* KTAvoidingEmojiTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E36BD18C1C98275300B1AF83 /* KTAvoidingEmojiTextView.m */; };
+		E36BD1911C98275300B1AF83 /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = E36BD18E1C98275300B1AF83 /* NSString+Emoji.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,12 @@
 		E36BD1771C98270C00B1AF83 /* KTAvoidingEmojiTextUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KTAvoidingEmojiTextUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E36BD17B1C98270C00B1AF83 /* KTAvoidingEmojiTextUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KTAvoidingEmojiTextUITests.m; sourceTree = "<group>"; };
 		E36BD17D1C98270C00B1AF83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E36BD1891C98275300B1AF83 /* KTAvoidingEmojiTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAvoidingEmojiTextField.h; sourceTree = "<group>"; };
+		E36BD18A1C98275300B1AF83 /* KTAvoidingEmojiTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAvoidingEmojiTextField.m; sourceTree = "<group>"; };
+		E36BD18B1C98275300B1AF83 /* KTAvoidingEmojiTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTAvoidingEmojiTextView.h; sourceTree = "<group>"; };
+		E36BD18C1C98275300B1AF83 /* KTAvoidingEmojiTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTAvoidingEmojiTextView.m; sourceTree = "<group>"; };
+		E36BD18D1C98275300B1AF83 /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		E36BD18E1C98275300B1AF83 /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +90,12 @@
 		E36BD14A1C98270C00B1AF83 = {
 			isa = PBXGroup;
 			children = (
+				E36BD1891C98275300B1AF83 /* KTAvoidingEmojiTextField.h */,
+				E36BD18A1C98275300B1AF83 /* KTAvoidingEmojiTextField.m */,
+				E36BD18B1C98275300B1AF83 /* KTAvoidingEmojiTextView.h */,
+				E36BD18C1C98275300B1AF83 /* KTAvoidingEmojiTextView.m */,
+				E36BD18D1C98275300B1AF83 /* NSString+Emoji.h */,
+				E36BD18E1C98275300B1AF83 /* NSString+Emoji.m */,
 				E36BD1551C98270C00B1AF83 /* KTAvoidingEmojiText */,
 				E36BD16F1C98270C00B1AF83 /* KTAvoidingEmojiTextTests */,
 				E36BD17A1C98270C00B1AF83 /* KTAvoidingEmojiTextUITests */,
@@ -270,8 +285,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E36BD1911C98275300B1AF83 /* NSString+Emoji.m in Sources */,
 				E36BD15E1C98270C00B1AF83 /* ViewController.m in Sources */,
+				E36BD1901C98275300B1AF83 /* KTAvoidingEmojiTextView.m in Sources */,
 				E36BD15B1C98270C00B1AF83 /* AppDelegate.m in Sources */,
+				E36BD18F1C98275300B1AF83 /* KTAvoidingEmojiTextField.m in Sources */,
 				E36BD1581C98270C00B1AF83 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
