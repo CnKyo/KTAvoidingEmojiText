@@ -1,9 +1,9 @@
 //
 //  NSString+Emoji.m
-//  KTAvodingEmojiText
+//  OV3D
 //
-//  Created by tujinqiu on 16/3/15.
-//  Copyright © 2016年 tujinqiu. All rights reserved.
+//  Created by kevin.tu on 15/12/9.
+//  Copyright © 2015年 ov. All rights reserved.
 //
 
 #import "NSString+Emoji.h"
@@ -33,7 +33,7 @@
                               else if (substring.length > 1)
                               {
                                   unichar ls = [substring characterAtIndex:1];
-                                  if (ls == 0x20e3)
+                                  if (ls == 0x20e3 || ls == 0xfe0f)
                                   {
                                       *stop = YES;
                                       containsEmoji = YES;

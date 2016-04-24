@@ -1,9 +1,9 @@
 //
 //  NSString+Emoji.h
-//  KTAvodingEmojiText
+//  OV3D
 //
-//  Created by tujinqiu on 16/3/15.
-//  Copyright © 2016年 tujinqiu. All rights reserved.
+//  Created by kevin.tu on 15/12/9.
+//  Copyright © 2015年 ov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
