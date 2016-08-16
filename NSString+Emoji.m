@@ -2,61 +2,115 @@
 //  NSString+Emoji.m
 //  OV3D
 //
-//  Created by kevin.tu on 15/12/9.
-//  Copyright © 2015年 ov. All rights reserved.
+//  Created by kevin.tu on 16/6/1.
+//  Copyright © 2016年 ov. All rights reserved.
 //
 
 #import "NSString+Emoji.h"
 
 @implementation NSString (Emoji)
 
+// 检查字符串是否包含emoji
 - (BOOL)containsEmoji
 {
-    __block BOOL containsEmoji = NO;
-    [self enumerateSubstringsInRange:NSMakeRange(0, self.length)
-                             options:NSStringEnumerationByComposedCharacterSequences
-                          usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
-                              unichar hs = [substring characterAtIndex:0];
-                              if (0xd800 <= hs && hs <= 0xdbff)
-                              {
-                                  if (substring.length > 1)
-                                  {
-                                      unichar ls = [substring characterAtIndex:1];
-                                      int uc = (hs - 0xd800) * 0x400 + (ls - 0xdc00) + 0x10000;
-                                      if (0x1d000 <= uc && uc <= 0x1f77f)
-                                      {
-                                          *stop = YES;
-                                          containsEmoji = YES;
-                                      }
-                                  }
-                              }
-                              else if (substring.length > 1)
-                              {
-                                  unichar ls = [substring characterAtIndex:1];
-                                  if (ls == 0x20e3 || ls == 0xfe0f)
-                                  {
-                                      *stop = YES;
-                                      containsEmoji = YES;
-                                  }
-                              }
-                              else
-                              {
-                                  if ((0x2100 <= hs && hs <= 0x27ff) ||
-                                      (0x2b05 <= hs && hs <= 0x2b07) ||
-                                      (0x2934 <= hs && hs <= 0x2935) ||
-                                      (0x3297 <= hs && hs <= 0x3299) ||
-                                      hs == 0xa9 || hs == 0xae ||
-                                      hs == 0x303d || hs == 0x3030 ||
-                                      hs == 0x2b55 || hs == 0x2b1c ||
-                                      hs == 0x2b1b || hs == 0x2b50)
-                                  {
-                                      *stop = YES;
-                                      containsEmoji = YES;
-                                  }
-                              }
-                          }];
+    __block BOOL contain = NO;
+    [self enumerateSubstringsInRange:NSMakeRange(0, self.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+        if ([substring isEmoji]) {
+            contain = YES;
+            *stop = YES;
+        }
+    }];
     
-    return containsEmoji;
+    return contain;
+}
+
+// 检查一个‘字符’是否是emoji表情
+- (BOOL)isEmoji
+{
+    if (self.length <= 0) {
+        return NO;
+    }
+    unichar first = [self characterAtIndex:0];
+    switch (self.length) {
+        case 1:
+        {
+            if (first == 0xa9 || first == 0xae || first == 0x2122 ||
+                first == 0x3030 || (first >= 0x25b6 && first <= 0x27bf) ||
+                first == 0x2328 || (first >= 0x23e9 && first <= 0x23fa)) {
+                return YES;
+            }
+        }
+            break;
+            
+        case 2:
+        {
+            unichar c = [self characterAtIndex:1];
+            if (c == 0xfe0f) {
+                if (first >= 0x203c && first <= 0x3299) {
+                    return YES;
+                }
+            }
+            if (first >= 0xd83c && first <= 0xd83e) {
+                return YES;
+            }
+        }
+            break;
+            
+        case 3:
+        {
+            unichar c = [self characterAtIndex:1];
+            if (c == 0xfe0f) {
+                if (first >= 0x23 && first <= 0x39) {
+                    return YES;
+                }
+            }
+            else if (c == 0xd83c) {
+                if (first == 0x26f9 || first == 0x261d || (first >= 0x270a && first <= 0x270d)) {
+                    return YES;
+                }
+            }
+            if (first == 0xd83c) {
+                return YES;
+            }
+        }
+            break;
+            
+        case 4:
+        {
+            unichar c = [self characterAtIndex:1];
+            if (c == 0xd83c) {
+                if (first == 0x261d || first == 0x270c) {
+                    return YES;
+                }
+            }
+            if (first >= 0xd83c && first <= 0xd83e) {
+                return YES;
+            }
+        }
+            break;
+            
+        case 5:
+        {
+            if (first == 0xd83d) {
+                return YES;
+            }
+        }
+            break;
+            
+        case 8:
+        case 11:
+        {
+            if (first == 0xd83d) {
+                return YES;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return NO;
 }
 
 @end
